@@ -1,0 +1,200 @@
+eltex-pg1-v9@eltex-2026-autumn:~$ echo "$TERM"
+dumb
+eltex-pg1-v9@eltex-2026-autumn:~$ ды  ls
+ls           lsblk        lscpu        lsinitramfs  lsirq        lslogins     lsmod        lsof         lsusb        
+lsattr       lsb_release  lsfd         lsipc        lslocks      lsmem        lsns         lspci        
+eltex-pg1-v9@eltex-2026-autumn:~$ lsecho $HIST            echo $HIST
+$HISTCMD       $HISTCONTROL   $HISTFILE      $HISTFILESIZE  $HISTSIZE      
+eltex-pg1-v9@eltex-2026-autumn:~$ echo $HISTecho "$HISTFILESIZE"
+2000
+eltex-pg1-v9@eltex-2026-autumn:~$ echo "$HISTFILESIZE"
+2000
+eltex-pg1-v9@eltex-2026-autumn:~$ ls -A "$HOME" | grep '^\.'
+.bash_history
+.bash_logout
+.bashrc
+.config
+.lesshst
+.log
+.profile
+.viminfo
+eltex-pg1-v9@eltex-2026-autumn:~$ HISTTIMEFORMAT='%F %T '
+eltex-pg1-v9@eltex-2026-autumn:~$ history | tail -n 5
+   83  2026-10-12 14:58:06 echo $HISTecho "$HISTFILESIZE"
+   84  2026-10-12 14:58:14 echo "$HISTFILESIZE"
+   85  2026-10-12 14:58:20 ls -A "$HOME" | grep '^\.'
+   86  2026-10-12 14:58:26 HISTTIMEFORMAT='%F %T '
+   87  2026-10-12 14:58:30 history | tail -n 5
+eltex-pg1-v9@eltex-2026-autumn:~$ вфеу    date
+Mon Oct 12 02:58:36 PM +07 2026
+eltex-pg1-v9@eltex-2026-autumn:~$ history | tail -n 3
+   87  2026-10-12 14:58:30 history | tail -n 5
+   88  2026-10-12 14:58:36 date
+   89  2026-10-12 14:58:39 history | tail -n 3
+eltex-pg1-v9@eltex-2026-autumn:~$ tail -n 3 "$HISTFILE"
+ls -d "$HOME"/$(date +%Y)-*
+#1791789642
+echo "$STY"
+eltex-pg1-v9@eltex-2026-autumn:~$ PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }history -a"
+eltex-pg1-v9@eltex-2026-autumn:~$ date
+Mon Oct 12 02:58:57 PM +07 2026
+eltex-pg1-v9@eltex-2026-autumn:~$ history | tail -n 3
+   91  2026-10-12 14:58:54 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }history -a"
+   92  2026-10-12 14:58:57 date
+   93  2026-10-12 14:59:00 history | tail -n 3
+eltex-pg1-v9@eltex-2026-autumn:~$ tail -n 3 "$HISTFILE"
+date
+#1791791940
+history | tail -n 3
+eltex-pg1-v9@eltex-2026-autumn:~$ DATE=$(date +%F)
+eltex-pg1-v9@eltex-2026-autumn:~$ echo "$DATE"
+2026-10-12
+eltex-pg1-v9@eltex-2026-autumn:~$ TIME=$(date +%T)
+eltex-pg1-v9@eltex-2026-autumn:~$ echo "$TIME"
+14:59:15
+eltex-pg1-v9@eltex-2026-autumn:~$ DATE_TIME="$DATE $TIME"
+eltex-pg1-v9@eltex-2026-autumn:~$ echo "$DATE_TIME"
+2026-10-12 14:59:15
+eltex-pg1-v9@eltex-2026-autumn:~$ find -L /bin /sbin -maxdepth 1 -type f -printf '%f\n' | grep '[0-9]' | sort -u
+addr2line
+b2sum
+base32
+base64
+bunzip2
+bzip2
+bzip2recover
+c89
+c89-gcc
+c99
+c99-gcc
+cpan5.36-x86_64-linux-gnu
+cpp-12
+diff3
+dumpe2fs
+e2freefrag
+e2fsck
+e2image
+e2label
+e2mmpstatus
+e2scrub
+e2scrub_all
+e2undo
+e4crypt
+e4defrag
+enc2xs
+fsck.ext2
+fsck.ext3
+fsck.ext4
+gcc-12
+gcc-ar-12
+gcc-nm-12
+gcc-ranlib-12
+gcov-12
+gcov-dump-12
+gcov-tool-12
+grub-menulst2cfg
+grub-mkpasswd-pbkdf2
+grub-syslinux2cfg
+h2ph
+h2xs
+i386
+killall5
+linux32
+linux64
+lto-dump-12
+md5sum
+md5sum.textutils
+mke2fs
+mkfs.ext2
+mkfs.ext3
+mkfs.ext4
+pdb3
+pdb3.11
+perl5.36.0
+perl5.36-x86_64-linux-gnu
+ping4
+ping6
+pl2pm
+pod2html
+pod2man
+pod2text
+pod2usage
+py3clean
+py3compile
+py3versions
+pydoc3
+pydoc3.11
+pygettext3
+pygettext3.11
+python3
+python3.11
+resize2fs
+sha1sum
+sha224sum
+sha256sum
+sha384sum
+sha512sum
+ssh-argv0
+systemd-id128
+traceroute6
+traceroute6.db
+tune2fs
+update-grub2
+x86_64
+x86_64-linux-gnu-addr2line
+x86_64-linux-gnu-ar
+x86_64-linux-gnu-as
+x86_64-linux-gnu-c++filt
+x86_64-linux-gnu-cpp
+x86_64-linux-gnu-cpp-12
+x86_64-linux-gnu-dwp
+x86_64-linux-gnu-elfedit
+x86_64-linux-gnu-gcc
+x86_64-linux-gnu-gcc-12
+x86_64-linux-gnu-gcc-ar
+x86_64-linux-gnu-gcc-ar-12
+x86_64-linux-gnu-gcc-nm
+x86_64-linux-gnu-gcc-nm-12
+x86_64-linux-gnu-gcc-ranlib
+x86_64-linux-gnu-gcc-ranlib-12
+x86_64-linux-gnu-gcov
+x86_64-linux-gnu-gcov-12
+x86_64-linux-gnu-gcov-dump
+x86_64-linux-gnu-gcov-dump-12
+x86_64-linux-gnu-gcov-tool
+x86_64-linux-gnu-gcov-tool-12
+x86_64-linux-gnu-gold
+x86_64-linux-gnu-gp-archive
+x86_64-linux-gnu-gp-collect-app
+x86_64-linux-gnu-gp-display-html
+x86_64-linux-gnu-gp-display-src
+x86_64-linux-gnu-gp-display-text
+x86_64-linux-gnu-gprof
+x86_64-linux-gnu-gprofng
+x86_64-linux-gnu-ld
+x86_64-linux-gnu-ld.bfd
+x86_64-linux-gnu-ld.gold
+x86_64-linux-gnu-lto-dump
+x86_64-linux-gnu-lto-dump-12
+x86_64-linux-gnu-nm
+x86_64-linux-gnu-objcopy
+x86_64-linux-gnu-objdump
+x86_64-linux-gnu-ranlib
+x86_64-linux-gnu-readelf
+x86_64-linux-gnu-size
+x86_64-linux-gnu-strings
+x86_64-linux-gnu-strip
+eltex-pg1-v9@eltex-2026-autumn:~$ PS1='\u@\h-$(date +%H:%M)> '
+eltex-pg1-v9@eltex-2026-autumn-14:59> export PS1
+eltex-pg1-v9@eltex-2026-autumn-14:59> bash --noprofile --norc -i
+eltex-pg1-v9@eltex-2026-autumn-14:59> wxit
+bash: wxit: command not found
+eltex-pg1-v9@eltex-2026-autumn-14:59> exit
+exit
+eltex-pg1-v9@eltex-2026-autumn-14:59> for m in {01..12}; do mkdir -p "$HOME/$(date +%Y)-$m"; done
+eltex-pg1-v9@eltex-2026-autumn-15:00> ls -d "$HOME"/$(date +%Y)-*
+/home/eltex-pg1-v9/2026-01  /home/eltex-pg1-v9/2026-04	/home/eltex-pg1-v9/2026-07  /home/eltex-pg1-v9/2026-10
+/home/eltex-pg1-v9/2026-02  /home/eltex-pg1-v9/2026-05	/home/eltex-pg1-v9/2026-08  /home/eltex-pg1-v9/2026-11
+/home/eltex-pg1-v9/2026-03  /home/eltex-pg1-v9/2026-06	/home/eltex-pg1-v9/2026-09  /home/eltex-pg1-v9/2026-12
+eltex-pg1-v9@eltex-2026-autumn-15:00> exit
+exit
