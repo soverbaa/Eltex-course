@@ -1,0 +1,201 @@
+Script started on 2026-10-19 04:58:40+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="120" LINES="30"]
+root@eltex-practice2-pg1-v9:~# BOOT_TIME=$(uptime -s)
+root@eltex-practice2-pg1-v9:~# BOOT_EPOCH=$(date -d "$BOOT_TIME" +%s)BOOT_EPOCH=$(date -d "$BOOT_TIME" +%s)
+root@eltex-practice2-pg1-v9:~# END_EPOCH=$((BOOT_EPOCH + 20))
+root@eltex-practice2-pg1-v9:~# END_TIME=$(date -d "@$END_EPOCH" '+%Y-%m-%d %H:%M:%S')END_TIME=$(date -d "@$END_EPOCH" '+%Y-%m-%d %H:%M:%S')
+root@eltex-practice2-pg1-v9:~# echo "Boot: $BOOT_TIME  End: $END_TIME"echo "Boot: $BOOT_TIME  End: $END_TIME"
+Boot: 2026-10-18 17:16:37  End: 2026-10-18 17:16:57
+root@eltex-practice2-pg1-v9:~# journalctl -b --since "$BOOT_TIME" --until "$END_TIME" --no-pager | head -40journalctl -b --since "$BOOT_TIME" --until "$END_TIME" --no-pager | head -40
+-- No entries --
+root@eltex-practice2-pg1-v9:~# journalctl -b --since "$BOOT_TIME" --no-pager | head -40journalctl -b --since "$BOOT_TIME" --no-pager | head -40
+Oct 18 17:17:12 localhost kernel: Linux version 6.8.0-147-generic (buildd@lcy02-amd64-081) (x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, GNU ld (GNU Binutils for Ubuntu) 2.42) #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:33:16 UTC 2026 (Ubuntu 6.8.0-147.147-generic 6.8.12)
+Oct 18 17:17:12 localhost kernel: Command line: BOOT_IMAGE=/vmlinuz-6.8.0-147-generic root=/dev/mapper/ubuntu--vg-ubuntu--lv ro
+Oct 18 17:17:12 localhost kernel: KERNEL supported cpus:
+Oct 18 17:17:12 localhost kernel:   Intel GenuineIntel
+Oct 18 17:17:12 localhost kernel:   AMD AuthenticAMD
+Oct 18 17:17:12 localhost kernel:   Hygon HygonGenuine
+Oct 18 17:17:12 localhost kernel:   Centaur CentaurHauls
+Oct 18 17:17:12 localhost kernel:   zhaoxin   Shanghai  
+Oct 18 17:17:12 localhost kernel: BIOS-provided physical RAM map:
+Oct 18 17:17:12 localhost kernel: BIOS-e820: [mem 0x0000000000000000-0x000000000009fbff] usable
+Oct 18 17:17:12 localhost kernel: BIOS-e820: [mem 0x000000000009fc00-0x000000000009ffff] reserved
+Oct 18 17:17:12 localhost kernel: BIOS-e820: [mem 0x00000000000f0000-0x00000000000fffff] reserved
+Oct 18 17:17:12 localhost kernel: BIOS-e820: [mem 0x0000000000100000-0x00000000bffd9fff] usable
+Oct 18 17:17:12 localhost kernel: BIOS-e820: [mem 0x00000000bffda000-0x00000000bfffffff] reserved
+Oct 18 17:17:12 localhost kernel: BIOS-e820: [mem 0x00000000feffc000-0x00000000feffffff] reserved
+Oct 18 17:17:12 localhost kernel: BIOS-e820: [mem 0x00000000fffc0000-0x00000000ffffffff] reserved
+Oct 18 17:17:12 localhost kernel: BIOS-e820: [mem 0x0000000100000000-0x000000013fffffff] usable
+Oct 18 17:17:12 localhost kernel: BIOS-e820: [mem 0x000000fd00000000-0x000000ffffffffff] reserved
+Oct 18 17:17:12 localhost kernel: NX (Execute Disable) protection: active
+Oct 18 17:17:12 localhost kernel: APIC: Static calls initialized
+Oct 18 17:17:12 localhost kernel: SMBIOS 2.8 present.
+Oct 18 17:17:12 localhost kernel: DMI: QEMU Standard PC (i440FX + PIIX, 1996), BIOS rel-1.17.0-0-gb52ca86e094d-prebuilt.qemu.org 04/01/2014
+Oct 18 17:17:12 localhost kernel: Hypervisor detected: KVM
+Oct 18 17:17:12 localhost kernel: kvm-clock: Using msrs 4b564d01 and 4b564d00
+Oct 18 17:17:12 localhost kernel: kvm-clock: using sched offset of 36974504532 cycles
+Oct 18 17:17:12 localhost kernel: clocksource: kvm-clock: mask: 0xffffffffffffffff max_cycles: 0x1cd42e4dffb, max_idle_ns: 881590591483 ns
+Oct 18 17:17:12 localhost kernel: tsc: Detected 3399.998 MHz processor
+Oct 18 17:17:12 localhost kernel: e820: update [mem 0x00000000-0x00000fff] usable ==> reserved
+Oct 18 17:17:12 localhost kernel: e820: remove [mem 0x000a0000-0x000fffff] usable
+Oct 18 17:17:12 localhost kernel: AGP: No AGP bridge found
+Oct 18 17:17:12 localhost kernel: last_pfn = 0x140000 max_arch_pfn = 0x400000000
+Oct 18 17:17:12 localhost kernel: MTRR map: 4 entries (3 fixed + 1 variable; max 19), built from 8 variable MTRRs
+Oct 18 17:17:12 localhost kernel: x86/PAT: Configuration [0-7]: WB  WC  UC- UC  WB  WP  UC- WT  
+Oct 18 17:17:12 localhost kernel: last_pfn = 0xbffda max_arch_pfn = 0x400000000
+Oct 18 17:17:12 localhost kernel: found SMP MP-table at [mem 0x000f5490-0x000f549f]
+Oct 18 17:17:12 localhost kernel: RAMDISK: [mem 0x2ede1000-0x336e7fff]
+Oct 18 17:17:12 localhost kernel: ACPI: Early table checksum verification disabled
+Oct 18 17:17:12 localhost kernel: ACPI: RSDP 0x00000000000F5290 000014 (v00 BOCHS )
+Oct 18 17:17:12 localhost kernel: ACPI: RSDT 0x00000000BFFE3B52 000034 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+Oct 18 17:17:12 localhost kernel: ACPI: FACP 0x00000000BFFE396C 000074 (v01 BOCHS  BXPC     00000001 BXPC 00000001)
+root@eltex-practice2-pg1-v9:~# find / -name auth.log 2>/dev/nullfind / -name auth.log 2>/dev/null
+/var/log/auth.log
+root@eltex-practice2-pg1-v9:~# AUTHLOG=/var/log/auth.log
+root@eltex-practice2-pg1-v9:~# awk '{ src=$5; msg=""; for(i=6;i<=NF;i++) msg=msg" "$i; print src"\t"msg }' "$AUTHLOG" | seroot@eltex-practice2-pg1-v9:~# awk '{ src=$5; msg=""; for(i=6;i<=NF;i++) msg=msg" "$i; print src"\t"msg }' "$AUTHLOG" | se
+se: command not found
+root@eltex-practice2-pg1-v9:~# awk '{ src=$5; msg=""; for(i=6;i<=NF;i++) msg=msg" "$i; print src"\t"msg }' "$AUTHLOG" | sed -E 's/\[[0-9]+\]//g' | sortawk '{ src=$5; msg=""; for(i=6;i<=NF;i++) msg=msg" "$i; print src"\t"msg }' "$AUTHLOG" | sed -E 's/\[[0-9]+\]//g' | sort -t$'\t' -k1,1 | head -30
+:	 TTY=pts/0 ; PWD=/home/user1 ; USER=root ; COMMAND=/usr/bin/dmesg
+15	 logged out. Waiting for processes to exit.
+17	 logged out. Waiting for processes to exit.
+19	 logged out. Waiting for processes to exit.
+21	 logged out. Waiting for processes to exit.
+34	 logged out. Waiting for processes to exit.
+added	 to /etc/group: name=group1, GID=1004
+added	 to /etc/group: name=user2, GID=1002
+added	 to /etc/group: name=user3, GID=1003
+added	 to /etc/gshadow: name=group1
+added	 to /etc/gshadow: name=user2
+added	 to /etc/gshadow: name=user3
+closed	 by authenticating user root 172.16.8.4 port 40504 [preauth]
+closed	 by authenticating user root 172.16.8.4 port 54850 [preauth]
+disconnect	 from 172.16.8.4 port 34446:11: disconnected by user
+disconnect	 from 172.16.8.4 port 45464:11: disconnected by user
+disconnect	 from 172.16.8.4 port 54860:11: disconnected by user
+disconnect	 from 172.16.8.4 port 60788:11: disconnected by user
+disconnect	 from 172.16.8.4 port 60802:11: disconnected by user
+from	 user root 172.16.8.4 port 34446
+from	 user root 172.16.8.4 port 45464
+from	 user root 172.16.8.4 port 54860
+from	 user root 172.16.8.4 port 60788
+from	 user root 172.16.8.4 port 60802
+group:	 name=group1, GID=1004
+group:	 name=user1, GID=1001
+group:	 name=user2, GID=1002
+group:	 name=user3, GID=1003
+is	 powering down (hypervisor initiated shutdown).
+listening	 on 0.0.0.0 port 22.
+root@eltex-practice2-pg1-v9:~# awk '{ print $5 }' "$AUTHLOG" | sed -E 's/\[[0-9]+\]//g' | sort | uniq -c | sort -nrawk '{ print $5 }' "$AUTHLOG" | sed -E 's/\[[0-9]+\]//g' | sort | uniq -c | sort -nr
+    325 session
+      7 user2)
+      7 password
+      6 user1)
+      6 added
+      5 publickey
+      5 from
+      5 disconnect
+      4 system
+      4 rules
+      4 listening
+      4 group:
+      3 user3)
+      3 user:
+      3 user
+      2 'user3'
+      2 'user2'
+      2 'user1'
+      2 the
+      2 seat
+      2 of
+      2 loading,
+      2 closed
+      1 /run/nologin,
+      1 login
+      1 is
+      1 34
+      1 21
+      1 19
+      1 17
+      1 15
+      1 :
+root@eltex-practice2-pg1-v9:~# awk -F: '$7=="/usr/sbin/nologin" { print $3"\t"$1 }' /etc/passwd | sort -t$'\t' -k1,1nr | while IFS=$'\t' read -r uid user; do groups=$(grep -E "[:,]$user(,|$)" /etc/group | cut -d: -f1 | paste -sd,); echo "$uid, $user, $groups"; doneroot@eltex-practice2-pg1-v9:~# awk -F: '$7=="/usr/sbin/nologin" { print $3"\t"$1 }' /etc/passwd | sort -t$'\t' -k1,1nr | while IFS=$'\t ... [truncated]
+65534, nobody, 
+1003, user3, users,group1
+998, systemd-network, 
+997, systemd-timesync, 
+992, systemd-resolve, 
+991, polkitd, 
+989, fwupd-refresh, 
+109, sshd, 
+108, usbmux, 
+107, landscape, 
+105, tcpdump, 
+104, uuidd, 
+103, syslog, adm
+101, messagebus, 
+42, _apt, 
+39, irc, 
+38, list, 
+34, backup, 
+33, www-data, 
+13, proxy, 
+10, uucp, 
+9, news, 
+8, mail, 
+7, lp, 
+6, man, 
+5, games, 
+3, sys, 
+2, bin, 
+1, daemon, 
+root@eltex-practice2-pg1-v9:~# dmesg | grep kernel | head -30
+[    0.099248] Booting paravirtualized kernel on KVM
+[    0.205442] Memory: 3925848K/4193760K available (22528K kernel code, 4441K rwdata, 14440K rodata, 4936K init, 4772K bss, 267652K reserved, 0K cma-reserved)
+[    0.708695] Loaded X.509 cert 'Build time autogenerated kernel key: 67dae3bf0284ce2ad34b9632cb7c8734f4f57c6c'
+[    0.937338] Loaded X.509 cert 'Build time autogenerated kernel key: 67dae3bf0284ce2ad34b9632cb7c8734f4f57c6c'
+[    0.981251] Freeing unused kernel image (initmem) memory: 4936K
+[    0.982952] Write protecting the kernel read-only data: 38912k
+[    0.986130] Freeing unused kernel image (rodata/data gap) memory: 1944K
+[   31.291082] systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[   31.980964] systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
+[   31.982755] systemd[1]: Mounting sys-kernel-tracing.mount - Kernel Trace File System...
+[   32.871188] systemd[1]: Mounting sys-kernel-config.mount - Kernel Configuration File System...
+[   32.926642] systemd[1]: Mounted sys-kernel-debug.mount - Kernel Debug File System.
+[   32.927784] systemd[1]: Mounted sys-kernel-tracing.mount - Kernel Trace File System.
+[   32.930086] systemd[1]: Mounted sys-kernel-config.mount - Kernel Configuration File System.
+root@eltex-practice2-pg1-v9:~# dmesg | grep kernel
+[    0.099248] Booting paravirtualized kernel on KVM
+[    0.205442] Memory: 3925848K/4193760K available (22528K kernel code, 4441K rwdata, 14440K rodata, 4936K init, 4772K bss, 267652K reserved, 0K cma-reserved)
+[    0.708695] Loaded X.509 cert 'Build time autogenerated kernel key: 67dae3bf0284ce2ad34b9632cb7c8734f4f57c6c'
+[    0.937338] Loaded X.509 cert 'Build time autogenerated kernel key: 67dae3bf0284ce2ad34b9632cb7c8734f4f57c6c'
+[    0.981251] Freeing unused kernel image (initmem) memory: 4936K
+[    0.982952] Write protecting the kernel read-only data: 38912k
+[    0.986130] Freeing unused kernel image (rodata/data gap) memory: 1944K
+[   31.291082] systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[   31.980964] systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
+[   31.982755] systemd[1]: Mounting sys-kernel-tracing.mount - Kernel Trace File System...
+[   32.871188] systemd[1]: Mounting sys-kernel-config.mount - Kernel Configuration File System...
+[   32.926642] systemd[1]: Mounted sys-kernel-debug.mount - Kernel Debug File System.
+[   32.927784] systemd[1]: Mounted sys-kernel-tracing.mount - Kernel Trace File System.
+[   32.930086] systemd[1]: Mounted sys-kernel-config.mount - Kernel Configuration File System.
+root@eltex-practice2-pg1-v9:~# wc -l /var/log/kern.log
+1375 /var/log/kern.log
+root@eltex-practice2-pg1-v9:~# grep -c '^Start-Date:' /var/log/apt/history.loggrep -c '^Start-Date:' /var/log/apt/history.log
+210
+root@eltex-practice2-pg1-v9:~# awk 'BEGIN{RS=""; FS="\n"}{ cmd=""; start=""; end=""; for(i=1;i<=NF;i++){ if($i ~ /^Commandline:/) cmd=$i; if($i ~ /^Start-Date:/) start=$i; if($i ~ /^End-Date:/) end=$i } if(cmd!="" || start!="" || end!="") print cmd"; "start"; "end }' /var/log/apt/history.log > /root/apt_history_formatted.txtawk 'BEGIN{RS=""; FS="\n"}{ cmd=""; start=""; end=""; for(i=1;i<=NF;i++){  ... [truncated]
+root@eltex-practice2-pg1-v9:~# wc -l /root/apt_history_formatted.txtwc -l /root/apt_history_formatted.txt
+210 /root/apt_history_formatted.txt
+root@eltex-practice2-pg1-v9:~# head -10 /root/apt_history_formatted.txthead -10 /root/apt_history_formatted.txt
+Commandline: apt-get install --reinstall apt; Start-Date: 2025-02-16  20:51:22; End-Date: 2025-02-16  20:51:24
+Commandline: apt-get install --reinstall base-files; Start-Date: 2025-02-16  20:51:26; End-Date: 2025-02-16  20:51:28
+Commandline: apt-get install --reinstall base-passwd; Start-Date: 2025-02-16  20:51:31; End-Date: 2025-02-16  20:51:32
+Commandline: apt-get install --reinstall bash; Start-Date: 2025-02-16  20:51:35; End-Date: 2025-02-16  20:51:37
+Commandline: apt-get install --reinstall bsdutils; Start-Date: 2025-02-16  20:51:39; End-Date: 2025-02-16  20:51:41
+Commandline: apt-get install --reinstall coreutils; Start-Date: 2025-02-16  20:51:44; End-Date: 2025-02-16  20:51:45
+Commandline: apt-get install --reinstall dash; Start-Date: 2025-02-16  20:51:48; End-Date: 2025-02-16  20:51:49
+Commandline: apt-get install --reinstall debconf; Start-Date: 2025-02-16  20:51:52; End-Date: 2025-02-16  20:51:53
+Commandline: apt-get install --reinstall debianutils; Start-Date: 2025-02-16  20:51:56; End-Date: 2025-02-16  20:51:58
+Commandline: apt-get install --reinstall diffutils; Start-Date: 2025-02-16  20:52:00; End-Date: 2025-02-16  20:52:02
+root@eltex-practice2-pg1-v9:~# ÑƒÑexit
+exit
+
+Script done on 2026-10-19 05:07:33+00:00 [COMMAND_EXIT_CODE="0"]
