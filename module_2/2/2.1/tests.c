@@ -17,12 +17,10 @@ int main(void)
 
     book_init(&book);
 
-    /* Фамилия и имя обязательны, остальные поля могут отсутствовать. */
     assert(contact_valid(&contact));
     assert(book_add(&book, &contact));
     assert(book.size == 1);
 
-    /* Отчество и несколько значений дополнительных полей сохраняются. */
     strcpy(contact.patronymic, "Сергеевна");
     strcpy(contact.workplace, "ООО Пример");
     strcpy(contact.position, "Разработчик");
@@ -43,7 +41,6 @@ int main(void)
     assert(strcmp(book.items[0].phones[1], "+7 900 444-55-66") == 0);
     assert(book.items[0].email_count == 2);
 
-    /* Пустые фамилия/имя и недопустимые количества отвергаются. */
     Contact invalid = make_contact();
     invalid.surname[0] = '\0';
     assert(!contact_valid(&invalid));
@@ -54,7 +51,6 @@ int main(void)
     invalid.phone_count = MAX_ITEMS + 1;
     assert(!contact_valid(&invalid));
 
-    /* Редактирование и удаление с проверкой индексов. */
     Contact second = make_contact();
     strcpy(second.surname, "Петрова");
     strcpy(second.name, "Мария");

@@ -31,7 +31,6 @@ int main(void)
             continue;
         }
 
-        // Удаляем остаток строки после числа
         int ch;
         while ((ch = getchar()) != '\n' && ch != EOF) {
         }

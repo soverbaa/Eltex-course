@@ -38,7 +38,6 @@ int queue_enqueue(PriorityQueue *queue, const char *message, unsigned int priori
     node->priority = priority;
     node->next = NULL;
 
-    /* Вставляем по убыванию приоритета. Равные приоритеты идут в порядке добавления. */
     QueueNode **position = &queue->head;
     while (*position != NULL && (*position)->priority >= priority) {
         position = &(*position)->next;

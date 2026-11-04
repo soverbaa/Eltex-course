@@ -3,7 +3,7 @@
 
 void book_init(PhoneBook *book)
 {
-    if (book) {
+    if (book) { 
         book->items = NULL;
         book->size = 0;
         book->capacity = 0;

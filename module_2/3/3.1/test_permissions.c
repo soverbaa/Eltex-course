@@ -3,7 +3,6 @@
 #include <assert.h>
 #include <stdio.h>
 
-// проверка преобразования цифровой записи
 static void test_parse_octal(void)
 {
     mode_t permissions = 0;
@@ -20,7 +19,6 @@ static void test_parse_octal(void)
     printf("[OK] test_parse_octal\n");
 }
 
-// проверка преобразования буквенной записи
 static void test_parse_symbolic(void)
 {
     mode_t permissions = 0;
@@ -37,7 +35,6 @@ static void test_parse_symbolic(void)
     printf("[OK] test_parse_symbolic\n");
 }
 
-// проверка некорректного ввода
 static void test_parse_invalid(void)
 {
     mode_t permissions = 0;
@@ -52,7 +49,6 @@ static void test_parse_invalid(void)
     printf("[OK] test_parse_invalid\n");
 }
 
-//проверка добавления прав
 static void test_add_permissions(void)
 {
     mode_t permissions = 0640;
@@ -68,7 +64,6 @@ static void test_add_permissions(void)
     printf("[OK] test_add_permissions\n");
 }
 
-// проверка удаления прав
 static void test_remove_permissions(void)
 {
     mode_t permissions = 0755;
@@ -84,7 +79,6 @@ static void test_remove_permissions(void)
     printf("[OK] test_remove_permissions\n");
 }
 
-// проверка назначения прав через =
 static void test_assign_permissions(void)
 {
     mode_t permissions = 0755;
@@ -105,7 +99,6 @@ static void test_assign_permissions(void)
     printf("[OK] test_assign_permissions\n");
 }
 
-// проверка последовательности команд
 static void test_multiple_commands(void)
 {
     mode_t permissions = 0755;
@@ -121,7 +114,6 @@ static void test_multiple_commands(void)
     printf("[OK] test_multiple_commands\n");
 }
 
-// проверка обработки ошибок без изменения исходных прав
 static void test_modify_invalid(void)
 {
     mode_t permissions = 0755;

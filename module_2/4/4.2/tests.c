@@ -29,7 +29,6 @@ int main(void)
     assert(!queue_dequeue_first(&queue, message, sizeof(message), &priority));
     assert(queue.size == 0);
 
-    /* Имитация генерации сообщений с различными приоритетами. */
     srand(42);
     for (int i = 0; i < 8; ++i) {
         char generated[MESSAGE_TEXT];

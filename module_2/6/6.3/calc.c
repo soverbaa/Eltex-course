@@ -18,7 +18,6 @@ void calculator_free(Calculator *calculator)
     if (calculator == NULL) return;
     for (size_t i = 0; i < calculator->size; ++i) {
         if (calculator->items[i].library_handle != NULL) {
-            /* Библиотека закрывается только после прекращения вызовов её функции. */
             (void)dlclose(calculator->items[i].library_handle);
         }
     }

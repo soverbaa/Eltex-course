@@ -7,22 +7,20 @@
 
 #define PERMISSION_MASK 0777
 
-// проверяет и преобразует цифровую или буквенную запись прав
 int parse_permissions(const char *input, mode_t *permissions)
 {
     if (input == NULL || permissions == NULL || input[0] == '\0') {
         return 0;
     }
 
-    // обработка буквенной записи (rwxr-xr--)
     if (strlen(input) == 9) {
         const char expected[3] = {'r', 'w', 'x'};
         mode_t result = 0;
 
         for (int i = 0; i < 9; i++) {
-            char expected_char = expected[i % 3]; //ожидаемые символы повторяются, 0, 1 или 2 (r, w, x)
+            char expected_char = expected[i % 3];
 
-            if (input[i] == expected_char) { // символ совпал - устанавливаем бит в result
+            if (input[i] == expected_char) {
                 result |= (mode_t)1 << (8 - i);
             } else if (input[i] != '-') {
                 return 0;
@@ -33,7 +31,6 @@ int parse_permissions(const char *input, mode_t *permissions)
         return 1;
     }
 
-    // цифровая запись (755 и тд)
     if (strlen(input) < 3 || strlen(input) > 4) {
         return 0;
     }
@@ -44,10 +41,10 @@ int parse_permissions(const char *input, mode_t *permissions)
         }
     }
 
-    char *end = NULL; // проверка на то что это число
-    unsigned long value = strtoul(input, &end, 8); // преобразуем строку в число (используя основание 8)
+    char *end = NULL;
+    unsigned long value = strtoul(input, &end, 8);
 
-    if (*end != '\0' || value > PERMISSION_MASK) { // проверка что строка преобразовна полностью 
+    if (*end != '\0' || value > PERMISSION_MASK) { 
         return 0;
     }
 
@@ -60,11 +57,11 @@ void print_permissions(mode_t permissions)
     permissions &= PERMISSION_MASK;
 
     const char symbols[] = {'r', 'w', 'x'}; 
-    char letters[10]; //для буквенного представления
+    char letters[10];
     char bits[10];
 
     for (int i = 0; i < 9; i++) {
-        int bit_is_set = (permissions >> (8 - i)) & 1;//Сдвигаем нужный бит на младшую позицию и получаем его значение с помощью побитового И
+        int bit_is_set = (permissions >> (8 - i)) & 1;
 
         bits[i] = bit_is_set ? '1' : '0'; 
         letters[i] = bit_is_set ? symbols[i % 3] : '-';
@@ -79,7 +76,6 @@ void print_permissions(mode_t permissions)
     printf("Битовое представление:  %s\n", bits);
 }
 
-// применяет одну команду к правам
 static int apply_single_command(mode_t *permissions,
                                 const char *command)
 {
@@ -87,7 +83,6 @@ static int apply_single_command(mode_t *permissions,
     int who = 0;
     int selected = 0;
 
-    // определяем субъекты: u, g, o, a
     while (*p != '\0' &&
            (*p == 'u' || *p == 'g' ||
             *p == 'o' || *p == 'a')) {
@@ -110,7 +105,6 @@ static int apply_single_command(mode_t *permissions,
         p++;
     }
 
-    //енсли субъект не указан, считаем, что выбраны все
     if (!selected) {
         who = 7;
     }
@@ -124,14 +118,12 @@ static int apply_single_command(mode_t *permissions,
 
     p++;
 
-    // для операций '+' и '-' обязательно должно быть указано право. операция = может быть без прав, например g=
     if (*p == '\0' && operation != '=') {
         return 0;
     }
 
     mode_t mask = 0;
 
-    // формируем маску прав r, w, x
     while (*p != '\0') {
         mode_t permission_bit;
 
@@ -149,20 +141,19 @@ static int apply_single_command(mode_t *permissions,
                 return 0;
         }
 
-        if (who & 4) { // если выбрали владельца, переносим право в старшие три бита: позиции 6–8.
+        if (who & 4) { 
             mask |= permission_bit << 6;
         }
-        if (who & 2) { //группа - средние три бита(3-5)
+        if (who & 2) {
             mask |= permission_bit << 3;
         }
-        if (who & 1) { //остальные младшие три бита (0-2)
+        if (who & 1) {
             mask |= permission_bit;
         }
 
         p++;
     }
 
-    // для операции '=' также очищаем выбранные разряды
     mode_t affected = 0;
 
     if (who & 4) {
@@ -187,11 +178,10 @@ static int apply_single_command(mode_t *permissions,
             break;
     }
 
-    *permissions &= PERMISSION_MASK;//оставляем только девять битов обычных прав доступа
+    *permissions &= PERMISSION_MASK;
     return 1;
 }
 
-// обрабатывает несколько команд через запятую
 int modify_permissions(mode_t *permissions, const char *command)
 {
     if (permissions == NULL || command == NULL ||
@@ -205,7 +195,7 @@ int modify_permissions(mode_t *permissions, const char *command)
         return 0;
     }
 
-    strcpy(copy, command);// копируем исходную строку в выделенную память
+    strcpy(copy, command);
 
     mode_t result = *permissions;
     char *start = copy;
@@ -218,7 +208,7 @@ int modify_permissions(mode_t *permissions, const char *command)
             *comma = '\0';
         }
 
-        if (!apply_single_command(&result, start)) { //применяем текущую команду к временным правам
+        if (!apply_single_command(&result, start)) {
             free(copy);
             return 0;
         }

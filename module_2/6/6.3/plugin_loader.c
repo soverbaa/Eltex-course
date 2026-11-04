@@ -75,8 +75,6 @@ int calculator_load_plugins(Calculator *calculator, const char *directory)
         }
 
         CalcFunc function = NULL;
-        /* POSIX гарантирует возможность получить адрес функции через dlsym.
-           memcpy позволяет избежать непереносимого прямого приведения типов в C. */
         memcpy(&function, &address, sizeof(function));
 
         char name[32], symbol[8];
